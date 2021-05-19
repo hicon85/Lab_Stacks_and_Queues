@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace _01.Reverse_Strings
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<char> name = new Stack<char>();
+
+            string words = Console.ReadLine();
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                name.Push(words[i]);
+            }
+
+            while (name.Count >0)
+            {
+                Console.Write(name.Pop());
+            }
+            Console.WriteLine();
+        }
+    }
+}
