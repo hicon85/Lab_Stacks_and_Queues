@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace _02.Stack_Sum
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] words = Console.ReadLine()
+                 .Split(' ')
+                 .Select(int.Parse)
+                 .ToArray();
+
+            Stack<int> number = new Stack<int>(words);
+
+            string command = Console.ReadLine().ToUpper();
+
+            while (command != "END")
+            {
+
+                string[] tokens = command.Split();
+                switch (tokens[0])
+                {
+                    
+                    case "ADD":
+                        number.Push(int.Parse(tokens[1]));
+                        number.Push(int.Parse(tokens[2]));
+                            break;
+
+                    case "REMOVE":
+
+                        int count = int.Parse(tokens[1]);
+
+                        if (number.Count >= count)
+                        {
+                            for (int i = 0; i < count; i++)
+                            {
+                                number.Pop();
+                            }
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+
+                command = Console.ReadLine().ToUpper();
+            }
+
+            Console.WriteLine($"Sum: {number.Sum()}");
+        }
+    }
+}
