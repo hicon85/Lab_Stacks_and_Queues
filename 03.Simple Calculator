@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace _03.Simple_Calculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine()
+                .Split()
+                .Reverse()
+                .ToArray();
+
+            Stack<string> calculation = new Stack<string>(input);
+
+
+            while (calculation.Count > 1)
+            {
+                int a = int.Parse(calculation.Pop());
+                string op = calculation.Pop();
+                int b = int.Parse(calculation.Pop());
+
+                if(op == "+")
+                {
+                    calculation.Push((a+b).ToString());
+                }
+                else
+                {
+                    calculation.Push((a - b).ToString());
+                }
+            }
+
+            Console.WriteLine(calculation.Pop());
+            
+        }
+    }
+}
