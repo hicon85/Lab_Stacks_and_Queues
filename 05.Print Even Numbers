@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _05.Print_Even_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = Console.ReadLine()
+                 .Split()
+                 .Select(int.Parse)
+                 .ToArray();
+
+            Queue<int> numbers = new Queue<int>(array);
+
+            int goodJob = numbers.Count();
+
+            for (int i = 0; i < goodJob; i++)
+            {
+                if(numbers.Peek() %2 == 1)
+                {
+                    numbers.Dequeue();
+                }
+                else
+                {
+                    numbers.Enqueue(numbers.Dequeue());
+                }
+
+                
+            }
+            Console.WriteLine(string.Join(", ", numbers));
+        }
+    }
+}
