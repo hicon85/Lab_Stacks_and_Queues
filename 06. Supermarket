@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _06.Supermarket
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<string> superMarket = new Queue<string>();
+
+            string input = null;
+
+            while ((input = Console.ReadLine()) != "End")
+            {
+                if(input == "Paid")
+                {
+                    while (superMarket.Any())
+                    {
+                        Console.WriteLine(superMarket.Dequeue());
+                    }
+                }
+                else
+                {
+                    superMarket.Enqueue(input);
+                }
+            }
+            Console.WriteLine($"{superMarket.Count} people remaining.");
+           
+        }
+    }
+}
